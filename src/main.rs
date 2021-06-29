@@ -50,15 +50,15 @@ fn model(app: &App) -> Model {
     let ampliY1: f32 = rng.gen_range(0.0..1.0);
     let ampliY2: f32 = 1.0 - ampliY1;
 
-    let freqX1: f32 = 1.0 + rng.gen_range(0.0..6.0);
-    let freqX2: f32 = 1.0 + rng.gen_range(0.0..6.0);
-    let freqY1: f32 = 1.0 + rng.gen_range(0.0..6.0);
-    let freqY2: f32 = 1.0 + rng.gen_range(0.0..6.0);
+    let freqX1: f32 = 1.0 + (rng.gen_range(0..6) as f32);
+    let freqX2: f32 = 1.0 + (rng.gen_range(0..6) as f32);
+    let freqY1: f32 = 1.0 + (rng.gen_range(0..6) as f32);
+    let freqY2: f32 = 1.0 + (rng.gen_range(0..6) as f32);
 
     let phaseX1: f32 = 0.0;
-    let phaseX2: f32 = rng.gen_range(0.0..12.0) * 6.2831855 / 12.0;
-    let phaseY1: f32 = rng.gen_range(0.0..12.0) * 6.2831855 / 12.0;
-    let phaseY2: f32 = rng.gen_range(0.0..12.0) * 6.2831855 / 12.0;
+    let phaseX2: f32 = (rng.gen_range(0..12) as f32) * 6.2831855 / 12.0;
+    let phaseY1: f32 = (rng.gen_range(0..12) as f32) * 6.2831855 / 12.0;
+    let phaseY2: f32 = (rng.gen_range(0..12) as f32) * 6.2831855 / 12.0;
 
     let dampX1:f32 = rng.gen_range(0.005..0.01);
     let dampX2:f32 = rng.gen_range(0.005..0.01);
@@ -87,8 +87,8 @@ fn view(app: &App, _model: &Model, frame: Frame) {
     //Draw background
     let draw = app.draw();
 
-    let start_point = pt2(_model.oldX*250.0, _model.oldY*250.0);
-    let end_point = pt2(_model.x*250.0, _model.y*250.0);
+    let start_point = pt2(_model.oldX*300.0, _model.oldY*300.0);
+    let end_point = pt2(_model.x*300.0, _model.y*300.0);
     draw.line()
         .start(start_point)
         .end(end_point)
