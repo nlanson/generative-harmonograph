@@ -34,7 +34,7 @@ struct Model {
 
 fn model(app: &App) -> Model {
     //Window Element
-    let _window = app.new_window().view(view).build().unwrap();
+    let _window = app.new_window().size(968, 968).view(view).build().unwrap();
     
     //RNG Param Init
     let mut rng = rand::thread_rng();
@@ -87,8 +87,8 @@ fn view(app: &App, _model: &Model, frame: Frame) {
     //Draw background
     let draw = app.draw();
 
-    let start_point = pt2(_model.oldX*300.0, _model.oldY*300.0);
-    let end_point = pt2(_model.x*300.0, _model.y*300.0);
+    let start_point = pt2(_model.oldX*450.0, _model.oldY*450.0);
+    let end_point = pt2(_model.x*450.0, _model.y*450.0);
     draw.line()
         .start(start_point)
         .end(end_point)

@@ -1030,6 +1030,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "harmonograph"
+version = "0.1.0"
+dependencies = [
+ "nannou",
+ "rand 0.8.4",
+]
+
+[[package]]
 name = "hashbrown"
 version = "0.9.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1433,14 +1441,6 @@ dependencies = [
  "walkdir",
  "wgpu",
  "winit",
-]
-
-[[package]]
-name = "nannou-testing"
-version = "0.1.0"
-dependencies = [
- "nannou",
- "rand 0.8.4",
 ]
 
 [[package]]
