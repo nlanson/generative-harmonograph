@@ -36,7 +36,7 @@ fn model(app: &App) -> Model {
     //Window Element
     let _window = app.new_window().view(view).build().unwrap();
     
-    //RNG Gen
+    //RNG Param Init
     let mut rng = rand::thread_rng();
 
     let t: f32 = 0.0;
@@ -56,23 +56,27 @@ fn model(app: &App) -> Model {
     let freqY2: f32 = 1.0 + rng.gen_range(0.0..6.0);
 
     let phaseX1: f32 = 0.0;
-    let phaseX2: f32 = rng.gen_range(0.0..12.0) * ((2.0 * std::f32::consts::PI) / 12.0);
-    let phaseY1: f32 = rng.gen_range(0.0..12.0) * ((2.0 * std::f32::consts::PI) / 12.0);
-    let phaseY2: f32 = rng.gen_range(0.0..12.0) * ((2.0 * std::f32::consts::PI) / 12.0);
+    let phaseX2: f32 = rng.gen_range(0.0..12.0) * 6.2831855 / 12.0;
+    let phaseY1: f32 = rng.gen_range(0.0..12.0) * 6.2831855 / 12.0;
+    let phaseY2: f32 = rng.gen_range(0.0..12.0) * 6.2831855 / 12.0;
 
     let dampX1:f32 = rng.gen_range(0.005..0.01);
     let dampX2:f32 = rng.gen_range(0.005..0.01);
     let dampY1:f32 = rng.gen_range(0.005..0.01);
     let dampY2:f32 = rng.gen_range(0.005..0.01);
     
-    Model { 
+    let mut model = Model { 
         _window,
         t, x, y, oldX, oldY,
         ampliX1, ampliX2, ampliY1, ampliY2,
         freqX1, freqX2, freqY1, freqY2,
         phaseX1, phaseX2, phaseY1, phaseY2,
         dampX1, dampX2, dampY1, dampY2
-    }
+    };
+
+    step(&mut model);
+
+    model
 }
 
 fn update(_app: &App, _model: &mut Model, _update: Update) {
@@ -92,7 +96,7 @@ fn view(app: &App, _model: &Model, frame: Frame) {
         .color(STEELBLUE);
     draw.to_frame(app, &frame).unwrap();
 
-    println!("old: {} | new: {}", start_point, end_point);
+    //println!("old: {} | new: {}", start_point, end_point);
 }
 
 fn step(
@@ -108,5 +112,5 @@ fn step(
 }
 
 fn eq(t:f32, ampli:f32, freq:f32, phase:f32, damp:f32) -> f32 {
-    ampli * f32::sin((t * freq) + phase) * f32::pow(std::f32::consts::E, -damp * t)
+    (ampli) * (f32::sin((t * freq) + phase)) * (f32::pow(std::f32::consts::E, -damp * t))
 }
