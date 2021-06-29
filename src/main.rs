@@ -1,99 +1,7 @@
 #![allow(non_snake_case)]
-// use nannou::prelude::*;
+use nannou::prelude::*;
 use rand::Rng;
 
-// fn main() {
-//     nannou::app(model).update(update).run();
-// }
-
-// struct Model {
-//     _window: window::Id,
-//     t: f32,
-//     x: f32,
-//     y:f32,
-//     ampliX1: f32,
-//     ampliX2: f32,
-//     ampliY1: f32,
-//     ampliY2: f32,
-//     freqX1: f32,
-//     freqX2: f32,
-//     freqY1: f32,
-//     freqY2: f32,
-//     phaseX1:f32,
-//     phaseX2: f32,
-//     phaseY1: f32,
-//     phaseY2: f32,
-//     dampX1: f32,
-//     dampX2: f32,
-//     dampY1: f32,
-//     dampY2: f32
-// }
-
-// fn model(app: &App) -> Model {
-//     //Initialise equation parameters and store into model state.
-//     let mut rng = rand::thread_rng();
-
-//     let t: f32 = 0.0;
-//     let x: f32 = t;
-//     let y: f32 = t;
-    
-//     let ampliX1: f32 = rng.gen_range(0.0..1.0);
-//     let ampliX2: f32 = 1.0 - ampliX1;
-//     let ampliY1: f32 = rng.gen_range(0.0..1.0);
-//     let ampliY2: f32 = 1.0 - ampliY1;
-
-//     let freqX1: f32 = 1.0 + rng.gen_range(0.0..6.0);
-//     let freqX2: f32 = 1.0 + rng.gen_range(0.0..6.0);
-//     let freqY1: f32 = 1.0 + rng.gen_range(0.0..6.0);
-//     let freqY2: f32 = 1.0 + rng.gen_range(0.0..6.0);
-
-//     let phaseX1: f32 = 0.0;
-//     let phaseX2: f32 = rng.gen_range(0.0..12.0) * (2.0 * std::f32::consts::PI) / 12.0;
-//     let phaseY1: f32 = rng.gen_range(0.0..12.0) * (2.0 * std::f32::consts::PI) / 12.0;
-//     let phaseY2: f32 = rng.gen_range(0.0..12.0) * (2.0 * std::f32::consts::PI) / 12.0;
-
-//     let dampX1:f32 = rng.gen_range(0.005..0.01);
-//     let dampX2:f32 = rng.gen_range(0.005..0.01);
-//     let dampY1:f32 = rng.gen_range(0.005..0.01);
-//     let dampY2:f32 = rng.gen_range(0.005..0.01);
-
-//     let _window = app.new_window().view(view).build().unwrap();
-    
-//     let model = Model { 
-//         _window,
-//         t, x, y,
-//         ampliX1, ampliX2, ampliY1, ampliY2,
-//         freqX1, freqX2, freqY1, freqY2,
-//         phaseX1, phaseX2, phaseY1, phaseY2,
-//         dampX1, dampX2, dampY1, dampY2
-//     };
-
-//     model
-// }
-
-// fn update(_app: &App, _model: &mut Model, _update: Update) {
-//     step(_model);
-// }
-
-// fn view(app: &App, _model: Model, frame: Frame) {
-//     //Draw background
-//     let draw = app.draw();
-//     draw.background().color(PLUM);
-
-//     //Get points into a polyline
-//     let points = (0..100).map(|_i| {
-//         let point = pt2(_model.x*100.0, _model.y*100.0);
-//         //step( _model );
-//         (point, STEELBLUE)
-//     });
-//     draw.polyline()
-//         .weight(3.0)
-//         .points_colored(points);
-    
-//     draw.to_frame(app, &frame).unwrap();
-// }
-
-use nannou::prelude::*;
 
 fn main() {
     nannou::app(model).update(update).run();
@@ -148,9 +56,9 @@ fn model(app: &App) -> Model {
     let freqY2: f32 = 1.0 + rng.gen_range(0.0..6.0);
 
     let phaseX1: f32 = 0.0;
-    let phaseX2: f32 = rng.gen_range(0.0..12.0) * (2.0 * std::f32::consts::PI) / 12.0;
-    let phaseY1: f32 = rng.gen_range(0.0..12.0) * (2.0 * std::f32::consts::PI) / 12.0;
-    let phaseY2: f32 = rng.gen_range(0.0..12.0) * (2.0 * std::f32::consts::PI) / 12.0;
+    let phaseX2: f32 = rng.gen_range(0.0..12.0) * ((2.0 * std::f32::consts::PI) / 12.0);
+    let phaseY1: f32 = rng.gen_range(0.0..12.0) * ((2.0 * std::f32::consts::PI) / 12.0);
+    let phaseY2: f32 = rng.gen_range(0.0..12.0) * ((2.0 * std::f32::consts::PI) / 12.0);
 
     let dampX1:f32 = rng.gen_range(0.005..0.01);
     let dampX2:f32 = rng.gen_range(0.005..0.01);
